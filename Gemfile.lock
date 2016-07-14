@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/damianFC/alexa-rubykit.git
+  revision: 22bbf1bb29cdc0ad43b130853785320ce7dea1fb
+  specs:
+    alexa_rubykit (1.1.0)
+      bundler (~> 1.7)
+      rake (~> 11.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -119,6 +127,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  alexa_rubykit!
   byebug
   listen (~> 3.0.5)
   puma (~> 3.0)
