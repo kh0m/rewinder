@@ -36,7 +36,16 @@ class ApplicationController < ActionController::API
       # Process your Intent Request
       p "slots: #{request.slots}"
       p "request name: #{request.name}"
-      response.add_speech("I received an intent named #{request.name}?")
+
+      response.add_speech("I received an intent named #{request.name}")
+
+      case request.name
+      when "Sentence"
+        p "sentence: #{request.slots}"
+      else
+      end
+
+
       response.add_hash_card( { :title => 'Ruby Intent', :subtitle => "Intent #{request.name}" } )
     end
 
@@ -44,7 +53,7 @@ class ApplicationController < ActionController::API
       # Wrap up whatever we need to do.
       p "request type: #{request.type}"
       p "end reason: #{request.reason}"
-      halt 200
+      render status: 200
     end
 
     # Return response
