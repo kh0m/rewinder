@@ -1,4 +1,5 @@
 require 'alexa_rubykit'
+require 'json'
 
 class ApplicationController < ActionController::API
   def main
@@ -37,14 +38,11 @@ class ApplicationController < ActionController::API
       p "slots: #{request.slots}"
       p "request name: #{request.name}"
 
-      response.add_speech("I received an intent named #{request.name}")
+      sentence = request.slots["sentence"]["value"]
+      backwards_sentence = sentence.split(" ").reverse.join(" ")
 
-      case request.name
-      when "Sentence"
-        p "sentence: #{request.slots}"
-      else
-      end
-
+      p "sentence: #{backwards_sentence}"
+      response.add_speech(backwards_sentence)
 
       response.add_hash_card( { :title => 'Ruby Intent', :subtitle => "Intent #{request.name}" } )
     end
